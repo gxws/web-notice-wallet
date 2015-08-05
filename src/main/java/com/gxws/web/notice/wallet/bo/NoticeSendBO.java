@@ -68,8 +68,7 @@ public class NoticeSendBO {
 	 * 8次定时发送发送
 	 * 
 	 * @author 朱伟亮
-	 * @create 2014-7-24上午10:57:41
-	 * 
+	 * @since 1.0
 	 */
 	@Scheduled(cron = "0/1 * * * * ?")
 	public void sending8() {
@@ -81,6 +80,12 @@ public class NoticeSendBO {
 		}
 	}
 
+	/**
+	 * 实际执行，报错后catch初始化
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @since 1.0
+	 */
 	private void exc() {
 		// if (0 == nqdmList.size() && 0 == countMap.size()) {
 		if (nqdmMap.isEmpty() && countMap.isEmpty()) {
@@ -136,8 +141,14 @@ public class NoticeSendBO {
 		nqdmList.removeAll(removeList);
 	}
 
+	/**
+	 * 报错后初始化
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @since 1.0
+	 */
 	private void init() {
-//		nqdmList = new ArrayList<>();
+		// nqdmList = new ArrayList<>();
 		nqdmMap = new HashMap<>();
 		countMap = new HashMap<>();
 		returnList = new ArrayList<>();
@@ -176,7 +187,7 @@ public class NoticeSendBO {
 				dm.setTime(new Date());
 				dm.setInitTime(new Date());
 				dm.setQueueTb(tb);
-//				nqdmList.add(dm);
+				// nqdmList.add(dm);
 				nqdmMap.put(tb.getId(), dm);
 			}
 		}
