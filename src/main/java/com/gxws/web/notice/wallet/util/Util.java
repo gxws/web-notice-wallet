@@ -43,18 +43,14 @@ public class Util {
 	}
 
 	/**
-	 * 签名
 	 * 
-	 * @author：韦永玉
+	 * @author 韦永玉
 	 * @param params
 	 *            签名参数
-	 * @param key
-	 *            钥匙
-	 * @param signType
-	 *            加密类型
 	 * @param charset
 	 *            编码格式
 	 * @return 返回签名字符串
+	 * @since 1.0
 	 */
 	public static String sign(Map<String, String> params, String charset) {
 		String linkStr = createLinkString(paraFilter(params));
@@ -87,7 +83,6 @@ public class Util {
 	 * 签名
 	 * 
 	 * @author：韦永玉
-	 * @create：2014年7月25日 上午11:55:29
 	 * @param in
 	 *            输入字符串
 	 * @param charset
@@ -141,11 +136,13 @@ public class Util {
 	}
 
 	/**
-	 * 把数组所有元素排序，并按照“参数=参数值”的模式用“&”字符拼接成字符串
+	 * 把数组所有元素排序，并按照“参数=参数值”的模式用“&amp;”字符拼接成字符串
 	 * 
+	 * @author zhuwl120820@gxwsxx.com
 	 * @param params
 	 *            需要排序并参与字符拼接的参数组
 	 * @return 拼接后字符串
+	 * @since 1.0
 	 */
 	public static String createLinkString(Map<String, String> params) {
 		List<String> keys = new ArrayList<String>(params.keySet());

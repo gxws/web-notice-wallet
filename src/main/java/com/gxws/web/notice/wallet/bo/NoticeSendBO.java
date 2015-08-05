@@ -174,7 +174,7 @@ public class NoticeSendBO {
 	 * 新加列表
 	 * 
 	 * @author zhuwl120820@gxwsxx.com
-	 * @param nqdmList
+	 * @param list
 	 *            等待发送列表
 	 * @since 1.0
 	 */
@@ -195,11 +195,11 @@ public class NoticeSendBO {
 	}
 
 	/**
-	 * 获取列表
-	 *
-	 * @author 朱伟亮
-	 * @create 2014-5-28 下午3:11:22
-	 * @return
+	 * 获取发送列表
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @return 发送列表
+	 * @since 1.0
 	 */
 	public List<QueueDm> getList() {
 		List<QueueDm> nqdmList = new ArrayList<>(nqdmMap.values());
