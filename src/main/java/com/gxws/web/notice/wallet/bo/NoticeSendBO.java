@@ -175,6 +175,7 @@ public class NoticeSendBO {
 	 * 
 	 * @author zhuwl120820@gxwsxx.com
 	 * @param nqdmList
+	 *            等待发送列表
 	 * @since 1.0
 	 */
 	public void addList(List<QueueTb> list) {
@@ -210,6 +211,7 @@ public class NoticeSendBO {
 	 * 
 	 * @author zhuwl120820@gxwsxx.com
 	 * @param nqdm
+	 *            发送对象
 	 * @return true：对方收到并成功处理，false：对方未收到或未处理
 	 * @since 1.0
 	 */

@@ -2,7 +2,6 @@ package com.gxws.web.notice.wallet.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,10 +9,25 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 工具类
+ * 
  * @author zhuwl120820@gxwsxx.com
- * @since
+ * @since 1.0
  */
 public class Util {
+	/**
+	 * 字符串转Map
+	 * 
+	 * @author zhuwl120820@gxwsxx.com
+	 * @param data
+	 *            要转换的字符串
+	 * @param separatorMap
+	 *            键值对间的分隔符(",")
+	 * @param separatorKeyValue
+	 *            键值间的分隔符("=")
+	 * @return 返回hash map对象
+	 * @since 1.0
+	 */
 	public static Map<String, String> string2Map(String data, String separatorMap, String separatorKeyValue) {
 		Map<String, String> map = new HashMap<>();
 		if (null == data || "".equals(data)) {
@@ -32,7 +46,6 @@ public class Util {
 	 * 签名
 	 * 
 	 * @author：韦永玉
-	 * @create：2014年7月30日 上午9:30:26
 	 * @param params
 	 *            签名参数
 	 * @param key
@@ -41,7 +54,7 @@ public class Util {
 	 *            加密类型
 	 * @param charset
 	 *            编码格式
-	 * @return
+	 * @return 返回签名字符串
 	 */
 	public static String sign(Map<String, String> params, String charset) {
 		String linkStr = createLinkString(paraFilter(params));
@@ -56,13 +69,10 @@ public class Util {
 	 * @return 去掉空值与签名参数后的新签名参数组
 	 */
 	public static Map<String, String> paraFilter(Map<String, String> sArray) {
-
 		Map<String, String> result = new HashMap<String, String>();
-
 		if (sArray == null || sArray.size() <= 0) {
 			return result;
 		}
-
 		for (String key : sArray.keySet()) {
 			String value = sArray.get(key);
 			if (value == null || value.equals("") || key.equalsIgnoreCase("paySign")) {
@@ -70,7 +80,6 @@ public class Util {
 			}
 			result.put(key, value);
 		}
-
 		return result;
 	}
 
@@ -80,9 +89,10 @@ public class Util {
 	 * @author：韦永玉
 	 * @create：2014年7月25日 上午11:55:29
 	 * @param in
-	 * @param key
+	 *            输入字符串
 	 * @param charset
-	 * @return
+	 *            签名字符串
+	 * @return 签名后的值
 	 */
 	public static String sign(String in, String charset) {
 		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
@@ -111,11 +121,13 @@ public class Util {
 	}
 
 	/**
+	 * 获取byte类型数据
+	 * 
 	 * @param content
+	 *            需要转换的数据
 	 * @param charset
-	 * @return
-	 * @throws SignatureException
-	 * @throws UnsupportedEncodingException
+	 *            编码格式
+	 * @return byte数据
 	 */
 	private static byte[] getContentBytes(String content, String charset) {
 		if (null == charset || "".equals(charset)) {
@@ -136,23 +148,18 @@ public class Util {
 	 * @return 拼接后字符串
 	 */
 	public static String createLinkString(Map<String, String> params) {
-
 		List<String> keys = new ArrayList<String>(params.keySet());
 		Collections.sort(keys);
-
 		String prestr = "";
-
 		for (int i = 0; i < keys.size(); i++) {
 			String key = keys.get(i);
 			String value = params.get(key);
-
 			if (i == keys.size() - 1) {
 				prestr = prestr + key + "=" + value;
 			} else {
 				prestr = prestr + key + "=" + value + "&";
 			}
 		}
-
 		return prestr;
 	}
 }

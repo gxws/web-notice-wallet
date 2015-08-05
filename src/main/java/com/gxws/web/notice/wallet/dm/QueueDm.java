@@ -5,8 +5,10 @@ import java.util.Date;
 import com.gxws.web.notice.wallet.tb.QueueTb;
 
 /**
+ * 发送对象包装类
+ * 
  * @author zhuwl120820@gxwsxx.com
- * @since
+ * @since 1.0
  */
 public class QueueDm {
 	private QueueTb queueTb;
