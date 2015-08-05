@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxws.web.notice.wallet.mapper.QueueTbMapper">
+	<select id="selectSendList" resultType="QueueTb">
+		select * from queue_tb
+		where status = '1' and id not in (#{0})
+	</select>
+</mapper>

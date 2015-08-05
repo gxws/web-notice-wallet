@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- mybatis sqlSessionFactory 配置成spring bean -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据源 bean -->
+		<property name="dataSource" ref="dataSourceDruid" />
+		<!-- mybatis全局配置文件位置 -->
+		<property name="configLocation" value="classpath:mybatis.xml" />
+		<!-- 指定mybatis mapper接口xml配置文件位置 -->
+		<property name="mapperLocations" value="classpath:mapper/*.xml" />
+	</bean>
+
+	<!-- mybatis mapper接口包扫描 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- mapper 包路径 -->
+		<property name="basePackage" value="com.gxws.web.notice.wallet.mapper" />
+		<!-- sqlSessionFactory bean -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<!-- mybatis mapper 层的aop配置 -->
+	<aop:config>
+		<aop:aspect id="id" ref="idAspect">
+			<aop:pointcut id="insertIdPc"
+				expression="execution(* com.gxws.web.notice.wallet.mapper.*.insert*(..))" />
+			<aop:before method="before" pointcut-ref="insertIdPc" />
+		</aop:aspect>
+		<aop:aspect id="noid" ref="noidAspect">
+			<aop:pointcut id="insertNoidPc"
+				expression="execution(* com.gxws.web.notice.wallet.mapper.*.insert*(..))" />
+			<aop:before method="before" pointcut-ref="insertNoidPc" />
+		</aop:aspect>
+	</aop:config>
+	<!-- 生成数据库主键id值的aop bean -->
+	<bean id="idAspect" class="com.gxws.tool.mybatis.aspect.IdAspect" />
+	<!-- 生成各种编号noid值的aop -->
+	<bean id="noidAspect" class="com.gxws.tool.mybatis.aspect.NoidAspect" />
+
+
+</beans>
