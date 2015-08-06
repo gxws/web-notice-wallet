@@ -223,15 +223,14 @@ public class NoticeSendBO {
 			HttpPost post = new HttpPost(nqdm.getUrl().trim());
 			List<NameValuePair> nvpList = new ArrayList<NameValuePair>();
 			Map<String, String> dataMap = Util.string2Map(nqdm.getData(), ",", "=");
-			if (null == nqdm.getAppKey() || "".equals(nqdm.getAppKey())) {
-
-			} else {
-				dataMap.put("appKey", nqdm.getAppKey());
-				String sign = Util.sign(dataMap, null);
-				dataMap.put("paySign", sign);
-				dataMap.remove("appKey");
-			}
-
+//			if (null == nqdm.getAppKey() || "".equals(nqdm.getAppKey())) {
+//
+//			} else {
+//				dataMap.put("appKey", nqdm.getAppKey());
+//				String sign = Util.sign(dataMap, null);
+//				dataMap.put("paySign", sign);
+//				dataMap.remove("appKey");
+//			}
 			for (Object key : dataMap.keySet()) {
 				log.debug("发送参数：" + key.toString() + ":" + dataMap.get(key).toString());
 				nvpList.add(new BasicNameValuePair(key.toString(), dataMap.get(key).toString()));

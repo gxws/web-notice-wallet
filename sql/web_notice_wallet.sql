@@ -10,7 +10,7 @@ Target Server Type    : MariaDB
 Target Server Version : 100017
 File Encoding         : 65001
 
-Date: 2015-08-05 14:46:49
+Date: 2015-08-06 17:45:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,6 +26,6 @@ CREATE TABLE `queue_tb` (
   `url` varchar(500) NOT NULL COMMENT '通知发送url',
   `time_create` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '生成时间',
   `time_sent` datetime DEFAULT NULL COMMENT '最后发送时间',
-  `app_key` varchar(500) NOT NULL COMMENT '用于签名的appkey',
+  `app_key` varchar(500) DEFAULT NULL COMMENT '已废弃_用于签名的appkey',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -50,8 +50,10 @@ public class Util {
 	 * @param charset
 	 *            编码格式
 	 * @return 返回签名字符串
+	 * @deprecated 通知发送前已经将签名工作完成
 	 * @since 1.0
 	 */
+	@Deprecated
 	public static String sign(Map<String, String> params, String charset) {
 		String linkStr = createLinkString(paraFilter(params));
 		return sign(linkStr, charset);
@@ -62,8 +64,10 @@ public class Util {
 	 * 
 	 * @param sArray
 	 *            签名参数组
+	 * @deprecated 通知发送前已经将签名工作完成
 	 * @return 去掉空值与签名参数后的新签名参数组
 	 */
+	@Deprecated
 	public static Map<String, String> paraFilter(Map<String, String> sArray) {
 		Map<String, String> result = new HashMap<String, String>();
 		if (sArray == null || sArray.size() <= 0) {
@@ -87,8 +91,10 @@ public class Util {
 	 *            输入字符串
 	 * @param charset
 	 *            签名字符串
+	 * @deprecated 通知发送前已经将签名工作完成
 	 * @return 签名后的值
 	 */
+	@Deprecated
 	public static String sign(String in, String charset) {
 		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 		try {
@@ -122,8 +128,10 @@ public class Util {
 	 *            需要转换的数据
 	 * @param charset
 	 *            编码格式
+	 * @deprecated 通知发送前已经将签名工作完成
 	 * @return byte数据
 	 */
+	@Deprecated
 	private static byte[] getContentBytes(String content, String charset) {
 		if (null == charset || "".equals(charset)) {
 			return content.getBytes();
@@ -143,7 +151,9 @@ public class Util {
 	 *            需要排序并参与字符拼接的参数组
 	 * @return 拼接后字符串
 	 * @since 1.0
+	 * @deprecated 通知发送前已经将签名工作完成
 	 */
+	@Deprecated
 	public static String createLinkString(Map<String, String> params) {
 		List<String> keys = new ArrayList<String>(params.keySet());
 		Collections.sort(keys);

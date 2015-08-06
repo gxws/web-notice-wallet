@@ -15,7 +15,7 @@ public class QueueTb {
 	private String url;
 	private Date timeCreate;
 	private Date timeSent;
-	private String appKey;
+//	private String appKey;
 
 	public String getId() {
 		return id;
@@ -57,13 +57,13 @@ public class QueueTb {
 		this.timeSent = timeSent;
 	}
 
-	public String getAppKey() {
-		return appKey;
-	}
-
-	public void setAppKey(String appKey) {
-		this.appKey = appKey;
-	}
+//	public String getAppKey() {
+//		return appKey;
+//	}
+//
+//	public void setAppKey(String appKey) {
+//		this.appKey = appKey;
+//	}
 
 	public Integer getStatus() {
 		return status;
